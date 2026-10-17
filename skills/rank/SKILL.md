@@ -9,7 +9,7 @@ Rank is a client for your own Hubbly account, not an independent publisher. The 
 
 ## Setup and preflight
 
-Ask the user for a workspace-scoped Rank API key created in Hubbly Settings. Keep it in `RANK_API_KEY`; never paste it into chat, command arguments, logs, or files. Set `RANK_API_URL` to the official HTTPS API origin. The wrapper requires `curl` and `jq`. Run `bash skills/rank/scripts/rank-command.sh rank` to discover whether status is enabled. Every command checks `/v1/agent/capabilities` first and refuses unavailable routes; an unavailable capability is not a reason to call a legacy dashboard route directly.
+Ask the user to configure a workspace-scoped Rank API key created in Hubbly Settings. Keep it in `RANK_API_KEY`; never paste it into chat, command arguments, logs, or files. Set `RANK_API_URL` to the official HTTPS API origin. The wrapper requires `curl` and `jq`. Resolve this installed skill's directory from this `SKILL.md`, then run `bash <skill-directory>/scripts/rank-command.sh rank` to discover whether status is enabled. Every command checks `/v1/agent/capabilities` first and refuses unavailable routes; an unavailable capability is not a reason to call a legacy dashboard route directly.
 
 Never infer that a successful key check grants write permission. Read keys cannot write. A revoked key, expired approval, kill switch, missing entitlement, or site mismatch must stop the action. Do not work around a gateway denial.
 
