@@ -2,6 +2,6 @@
 
 Propose a new page draft through Rank's existing write job.
 
-Resolve `<skill-directory>` from the installed `SKILL.md`, then run `bash <skill-directory>/scripts/rank-command.sh rank-write <site-uuid> <payload.json>` only after the user has configured `RANK_API_KEY` and `RANK_API_URL`. The wrapper checks the exact command, method, and route in the authenticated capability catalog before calling it. If unavailable, explain the missing gateway capability and stop.
+This command is disabled in the current read-only phase. Do not run it or call `POST /v1/agent/sites/{id}/drafts` directly. The wrapper exits with code 3 before any network request, even if a malformed capability response advertises the route.
 
-Draft text must pass guardrails and fact checks. Preview and confirm through the gateway; do not bypass an unavailable route.
+A future client must implement preview and exact payload-bound confirmation. Draft text must still pass Rank's guardrails and fact checks, and server-side approval remains mandatory where required. Until then, use the Hubbly dashboard.
