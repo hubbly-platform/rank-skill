@@ -2,6 +2,6 @@
 
 Propose changes to buyer questions tracked by the citation sampler.
 
-Resolve `<skill-directory>` from the installed `SKILL.md`, then run `bash <skill-directory>/scripts/rank-command.sh rank-questions <site-uuid> <payload.json>` only after the user has configured `RANK_API_KEY` and `RANK_API_URL`. The wrapper checks the exact command, method, and route in the authenticated capability catalog before calling it. If unavailable, explain the missing gateway capability and stop.
+This command is disabled in the current read-only phase. Do not run it or call `PUT /v1/agent/sites/{id}/questions` directly. The wrapper exits with code 3 before any network request, even if a malformed capability response advertises the route.
 
-This is a write. Obtain a gateway preview and payload-bound confirmation, then honor any awaiting_approval response.
+A future client must first implement a gateway preview and payload-bound confirmation, then honor any `awaiting_approval` response. Until that flow exists and the gateway advertises the exact contract, make question changes in the Hubbly dashboard.

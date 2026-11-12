@@ -2,6 +2,6 @@
 
 Propose publishing an existing draft.
 
-Resolve `<skill-directory>` from the installed `SKILL.md`, then run `bash <skill-directory>/scripts/rank-command.sh rank-publish <draft-uuid> <payload.json>` only after the user has configured `RANK_API_KEY` and `RANK_API_URL`. The wrapper checks the exact command, method, and route in the authenticated capability catalog before calling it. If unavailable, explain the missing gateway capability and stop.
+This command is disabled in the current read-only phase. Do not run it or call `POST /v1/agent/drafts/{id}/publish` directly. The wrapper exits with code 3 before any network request, even if a malformed capability response advertises the route.
 
-Only use an authorized site and gateway confirmation. Require public verification and a rollback handle before claiming success.
+A future client must implement preview and exact payload-bound confirmation on an authorized site, then require public verification and a rollback handle before claiming success. Until then, use the Hubbly dashboard.

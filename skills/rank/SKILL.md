@@ -1,6 +1,6 @@
 ---
 name: rank
-description: Use the Hubbly Rank gateway to inspect a connected site's SEO and AI visibility, or to propose governed Rank changes when the gateway advertises those capabilities.
+description: Use the Hubbly Rank gateway to inspect a connected site's SEO and AI visibility through nine read-only commands; question, draft, and publish writes remain disabled.
 ---
 
 # Hubbly Rank
@@ -9,19 +9,19 @@ Rank is a client for your own Hubbly account, not an independent publisher. The 
 
 ## Setup and preflight
 
-Ask the user to configure a workspace-scoped Rank API key created in Hubbly Settings. Keep it in `RANK_API_KEY`; never paste it into chat, command arguments, logs, or files. Set `RANK_API_URL` to the official HTTPS API origin. The wrapper requires `curl` and `jq`. Resolve this installed skill's directory from this `SKILL.md`, then run `bash <skill-directory>/scripts/rank-command.sh rank` to discover whether status is enabled. Every command checks `/v1/agent/capabilities` first and refuses unavailable routes; an unavailable capability is not a reason to call a legacy dashboard route directly.
+Ask the user to configure a workspace-scoped Rank API key created in Hubbly Settings → API keys. Keep it in `RANK_API_KEY`; never paste it into chat, command arguments, logs, or files. Set `RANK_API_URL` to the official HTTPS API origin. The wrapper requires `curl` and `jq`. Resolve this installed skill's directory from this `SKILL.md`, then run `bash <skill-directory>/scripts/rank-command.sh rank` to discover whether status is enabled. Every read command checks `/v1/agent/capabilities` first and refuses unavailable routes; an unavailable capability is not a reason to call a legacy dashboard route directly.
 
 Never infer that a successful key check grants write permission. Read keys cannot write. A revoked key, expired approval, kill switch, missing entitlement, or site mismatch must stop the action. Do not work around a gateway denial.
 
 ## Commands
 
-Read the matching file in `commands/` before running one of the twelve commands. Read `playbooks/first-run.md` for onboarding, `playbooks/weekly-loop.md` for recurring work, or `playbooks/safe-autonomy.md` before any write.
+Read the matching file in `commands/` before running one of the twelve catalog commands. Nine reads run only when advertised; the three write commands always fail closed in this phase. Read `playbooks/first-run.md` for onboarding, `playbooks/weekly-loop.md` for recurring work, or `playbooks/safe-autonomy.md` before any future write.
 
 | Command | Purpose |
 | --- | --- |
 | `/rank` | Account/site status |
-| `/rank-setup` | Connection status and connect links |
-| `/rank-scan <url>` | Public SEO/AEO scan |
+| `/rank-setup` | Sites and Search Console connection state |
+| `/rank-scan <url>` | Public homepage metadata and links; no competitor comparison |
 | `/rank-health <site-uuid>` | Technical health |
 | `/rank-opportunities <site-uuid>` | Search Console opportunities |
 | `/rank-visibility <site-uuid>` | Measured AI citations |
